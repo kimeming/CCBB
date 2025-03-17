@@ -1,0 +1,30 @@
+
+.null-alert{
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    color: #666;
+}
+.loading-area{
+    width: 100%;
+    height: 50px;
+    justify-items: center;
+    margin-top: 50px;
+    .icon-spinner{
+        display: block;
+    }
+}
+.notice-search-results{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    span{
+        color: gray;
+    }
+    strong{
+        color: black;
+    }
+}

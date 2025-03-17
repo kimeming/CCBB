@@ -1,0 +1,35 @@
+@import "../common/mixins"; // mixin.scss
+@import "../common/variables"; // variables.scss
+
+.search-result {
+  border-top: 2px solid $black;
+
+  .result-section {
+    border-bottom: 2px solid $lightgray;
+    padding: 2em 0;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .category-tit {
+    font-weight: 700;
+    font-size: 1.4em;
+    padding-bottom: 1.1em;
+  }
+
+  .result-list {
+    .list {
+      a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 0;
+        transition: .3s;
+        &:hover, &:focus {
+          color: $point-color;
+        }
+      }
+    }
+  }
+}

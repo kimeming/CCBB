@@ -1,0 +1,290 @@
+@import "../common/mixins"; // mixin.scss
+@import "../common/variables"; // variables.scss
+
+// book-view
+.book-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .img-box {
+    display: flex;
+    justify-content: center;
+  }
+
+  .info-box {
+    border-top: 2px solid $black;
+    padding: 1rem 0 0;
+  }
+
+  .book-tit {
+    margin-bottom: 1rem;
+
+    p {
+      font-size: 16px;
+      font-weight: 700;
+      width: 100%;
+    }
+    span {
+      color: $darkgray;
+    }
+  }
+
+  .book-info {
+    li {
+      display: flex;
+      gap: 10px;
+      em {
+        font-weight: 500;
+        min-width: 50px;
+      }
+      span {
+        color: $darkgray;
+      }
+      &:not(:last-child) {
+        padding-bottom: 5px;
+      }
+    }
+  }
+  .book-text {
+    padding: 1rem 0;
+  }
+
+  .util-box {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .interest {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f8f8f8;
+  }
+
+  .btn-wrap {
+    width: calc(100% - 50px);
+  }
+}
+
+@include responsive(768px) {
+  .book-view {
+    .book-tit {
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@include responsive(1024px) {
+  .book-view {
+    flex-direction: row;
+    gap: 30px;
+    .img-box {
+      width: calc(40% - 15px);
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .info-box {
+      width: calc(60% - 15px);
+      padding: 1.5rem 0 0;
+    }
+    .book-tit {
+      p {
+        font-size: 24px;
+      }
+    }
+    .book-info {
+      li {
+        em {
+          min-width: 80px;
+        }
+      }
+    }
+  }
+}
+
+// comment-wrap
+.comment-wrap {
+  margin-top: 60px;
+
+  .comment-tit {
+    font-weight: 700;
+    font-size: 20px;
+    padding-bottom: 1rem;
+  }
+  .noti {
+    display: block;
+    padding: 40px 0 20px;
+    text-align: center;
+    color: $darkgray;
+  }
+
+  .comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    li {
+      display: flex;
+    }
+    .comment {
+      width: fit-content;
+      max-width: 980px;
+      .name {
+        display: block;
+        margin-bottom: 4px;
+      }
+      p {
+        width: 100%;
+        background-color: $lightgray;
+        padding: 10px 12px;
+        border-radius: 5px 15px 15px 15px;
+      }
+    }
+    .my-comment {
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+      align-items: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+      .name {
+        text-align: right;
+      }
+      p {
+        border-radius: 15px 15px 5px 15px;
+        background-color: #ffdd78;
+      }
+    }
+    .comment-util {
+      display: flex;
+      gap: 4px;
+      button {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .reply-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      border: 1px solid $lightgray;
+      border-radius: 10px;
+      resize: none;
+      padding: 10px;
+    }
+
+    .reply-btn {
+      background-color: $point-color;
+      border-radius: 10px;
+      color: $white;
+      min-height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@include responsive(768px) {
+  .comment-wrap {
+    .comment-tit {
+      padding-bottom: 2rem;
+      font-size: 28px;
+    }
+    .comment-list {
+      gap: 20px;
+      .comment {
+        p {
+          padding: 10px 20px;
+        }
+      }
+    }
+    .noti {
+      padding: 60px 0 20px;
+      text-align: left;
+    }
+    .reply-wrap {
+      flex-direction: row;
+      textarea {
+        width: calc(100% - 160px);
+      }
+      .reply-btn {
+        width: 140px;
+      }
+    }
+  }
+}
+
+// 팝업
+.popup-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  &.on {
+    z-index: 100;
+  }
+  .alert-popup {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    width: calc(100% - 40px);
+    max-width: 300px;
+    height: 150px;
+    margin: 0 auto;
+    padding: 1em;
+    background-color: $white;
+    border-radius: 10px;
+    p {
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+
+  .popup-btn {
+    display: flex;
+    gap: 5px;
+    button {
+      width: 60px;
+      height: 30px;
+      border-radius: 5px;
+      font-size: 14px;
+      &:first-child {
+        background-color: $point-color;
+        color: $white;
+      }
+      &:last-child {
+        background-color: $darkgray;
+        color: $white;
+      }
+    }
+  }
+}
+
+.login-message {
+  padding: 30px;
+  margin-top: 30px;
+  border: 1px solid $lightgray;
+  border-radius: 10px;
+  text-align: center;
+}

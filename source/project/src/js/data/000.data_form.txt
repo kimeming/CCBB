@@ -1,0 +1,32 @@
+[ 데이터 형식 ]
+
+1. 책 데이터(book_data.json)
+- ISBN (앞 3자리는 고유번호, 뒤 7자리는 랜덤수) 10자리-  
+    문학 996-   
+    인문사화과학 997-   
+    예술 998-   
+    매거진 999
+- 책 이름 title
+- 작가 author
+- 출판사  publisher
+- 책소개내용 (이달의도서 + 책 상세페이지) info
+- 장르 (카테고리) genre
+- 발행일 (최신순정렬용) pDate
+- 대출횟수 (랜덤수돌려서) bNum
+- 페이지수 pNum
+
+2. 멤버데이터(member_data.json)
+- 이름 NAME  
+- 멤버아이디 ID
+- 비밀번호 PW 
+- 대출목록 BData(borrowData) : ISBN 배열로 넣을거임
+
+3. 커뮤니티데이터
+ - 공지사항 : 
+    idx : idx
+    제목 : title
+    작성자 : user
+    내용 : contant
+
+
+
