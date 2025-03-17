@@ -33,7 +33,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://kimeming.github.io/CCBB/",
+  "homepage": "https://kimeming.github.io/CCBB",
   "eslintConfig": {
     "extends": [
       "react-app",
