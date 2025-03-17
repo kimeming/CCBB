@@ -26,7 +26,7 @@ import "./css/common/_core.scss";
 
 export default function MainComponent() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/CCBB">
       <ScrollTop />
       <Routes>
         <Route path="/" element={<Layout />}>
