@@ -1,0 +1,86 @@
+// login.scss
+@import "../common/mixins"; // mixin.scss
+@import "../common/variables"; // variables.scss
+
+/** 로그인 컨텐츠 css **/
+
+.login-container {
+  font-family: 'Pretendard', sans-serif;
+  margin: 0px auto;
+  margin-bottom: 30px;
+  padding: 50px 0px 50px;
+  border: none;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  height: 50vh;
+  align-items: center;
+  .login-wrap {
+    display: flex;
+    flex-direction: column;
+    .input-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .input-box {
+        width: 300px;
+        border: 1px solid $gray;
+        border-radius: 10px;
+        padding: 14px 18px;
+        height: 50px;
+      }
+      .password-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .toggle-password {
+          position: absolute;
+          padding-right: 10px;
+        }
+      }
+      .errorMessageWrap{
+        color: red;
+      }
+    }
+    .input-box {
+      border: 1px solid $gray;
+      border-radius: 10px;
+      height: 30px;
+      padding: 14px 18px;
+    }
+    .login-btn,
+    .join-btn {
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: $white;
+      background-color: $mint;
+    }
+    .login-btn:disabled{
+      background-color: $gray;
+      cursor:default
+    }
+    .divider {
+      width: 100%;
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 10px 0;
+    }
+  }
+}
+
+@include responsive(1024px) {
+  .login-container {
+    // border: 1px solid #e9e9e9;
+    padding: 70px 140px 100px;
+    display: flex;
+    justify-content: center;
+    max-width: 1300px;
+  }
+}

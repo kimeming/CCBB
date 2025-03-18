@@ -1,0 +1,12 @@
+// 반응형 믹스인
+@mixin responsive($size) {
+    @media screen and (min-width: $size) {
+      @content;
+    }
+}
+  
+// 포커스 스타일
+@mixin focus-style {
+  outline: 3px dashed #000;
+  outline-offset: -3px;
+}

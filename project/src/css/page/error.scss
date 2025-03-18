@@ -1,0 +1,77 @@
+@import "../common/mixins"; // mixin.scss
+@import "../common/variables"; // variables.scss
+
+.error-wrap img {
+  width: 100%;
+}
+
+.error-wrap {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  max-height: 500px;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.text-wrap {
+  position: absolute;
+  left: 44%;
+  top: 34%;
+  translate: -50% -30%;
+  width: 100%;
+  padding-bottom: min(10vw, 30px);
+
+  h2 {
+    font-weight: bold;
+    font-size: 2em;
+    padding-bottom: 1em;
+  }
+  
+  p {
+    color: $darkgray;
+    font-size: 1.1em;
+  }
+}
+
+.homepage {
+  position: absolute;
+  left: 44%;
+  top: 70%;
+  translate: -50% -30%;
+  display: block;
+  padding: 4px 16px;
+  border-radius: 10px;
+  border: 1px solid $point-color;
+  background-color: $white;
+  color: $point-color;
+  transition: all .3s;
+
+  &:hover {
+    background-color: $point-color;
+    color: $white;
+  }
+}
+
+@include responsive(500px) {
+  .homepage {
+    margin-top: 30px;
+  }
+}
+
+@include responsive(768px) {
+  .homepage {
+    top: 80%;
+  }
+}
+
