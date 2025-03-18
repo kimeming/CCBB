@@ -1,0 +1,712 @@
+// main.scss
+@import "../common/mixins"; // mixin.scss
+@import "../common/variables"; // variables.scss
+
+/** 메인 컨텐츠 css **/
+
+// 메인 공통 레이아웃
+#main {
+  margin-top: 60px;
+}
+.section {
+  .inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    overflow: hidden;
+  }
+}
+.section:first-child {
+  .inner {
+    padding-top: 60px;
+  }
+}
+
+@include responsive(768px) {
+  .section {
+    .inner {
+      padding: 50px 25px;
+    }
+  }
+  .section:first-child {
+    .inner {
+      padding-top: 100px;
+    }
+  }
+}
+
+@include responsive(1024px) {
+  #main {
+    margin-top: 135px;
+  }
+
+  .section {
+    .inner {
+      padding: 70px 30px;
+    }
+  }
+  .section:first-child {
+    .inner {
+      padding-top: 140px;
+    }
+  }
+}
+
+@include responsive(1200px) {
+  .section {
+    .inner {
+      padding: 70px 40px;
+    }
+  }
+}
+
+// section - intro
+.intro-tit {
+  font-size: 32px;
+  font-weight: 500;
+  word-break: keep-all;
+  text-align: center;
+  strong {
+    font-weight: 700;
+  }
+}
+
+.main-search-wrap {
+  display: none;
+}
+
+.link-box-wrap {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3%;
+
+  .link-box {
+    display: flex;
+    padding: 6vw;
+    position: relative;
+    border-radius: 7vw;
+    overflow: hidden;
+    background-color: $black;
+    color: $white;
+
+    &::after {
+      content: "";
+      width: 100%;
+      padding-bottom: 100%;
+    }
+    p {
+      font-size: 24px;
+      font-weight: 700;
+      height: fit-content;
+      position: absolute;
+      z-index: 1;
+    }
+    .link-box-bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      transition: all 0.4s ease-in;
+      &.bg01 {
+        width: 100%;
+        height: 100%;
+        background: url("../../../public/img/main/icon-main-bg01.svg") center
+          no-repeat;
+        background-size: cover;
+        scale: 1.2;
+      }
+      &.bg02 {
+        width: 100%;
+        height: 100%;
+        background: $pink;
+        transition: 0.4s;
+      }
+      &.bg03 {
+        width: 100%;
+        height: 70%;
+        bottom: 0;
+        top: auto;
+        background: $lightblue;
+        border-radius: 50% 50% 0 0;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.09, 1.25);
+      }
+      &.bg04 {
+        width: 100%;
+        height: 100%;
+        background: url("../../../public/img/main/icon-main-bg04.svg") center
+          no-repeat;
+        background-size: cover;
+        scale: 1.1;
+        translate: 5% 5%;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+@include responsive(768px) {
+  .intro-tit {
+    font-size: 42px;
+    letter-spacing: -3px;
+  }
+
+  .link-box-wrap {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    .link-box {
+      border-radius: 30px;
+      padding: 30px;
+      max-width: 332px;
+      p {
+        font-size: min(3vw, 42px);
+      }
+    }
+    .link-box:hover {
+      .bg01 {
+        scale: 10;
+      }
+      .bg02 {
+        scale: 0.3;
+        border-radius: 50%;
+      }
+      .bg03 {
+        height: 40%;
+      }
+      .bg04 {
+        translate: -5% -5%;
+      }
+    }
+  }
+}
+
+@include responsive(1024px) {
+  .intro-tit {
+    font-size: 56px;
+  }
+}
+
+@include responsive(1200px) {
+  .link-box-wrap {
+    gap: 24px;
+    .link-box {
+      border-radius: 50px;
+    }
+  }
+}
+
+// section - board
+.board-top {
+  display: flex;
+  align-items: center;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background-color: $lightgray;
+  }
+}
+
+.more-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f4f7 url("../../../public/img/common/icon-arrow.svg") center
+    no-repeat;
+  border-radius: 7px;
+  display: block;
+  transition: all 0.3s;
+  &:hover,
+  &:focus {
+    background: $point-color
+      url("../../../public/img/common/icon-arrow-white.svg") center no-repeat;
+  }
+}
+
+.board-tab {
+  width: calc(100% - 30px);
+  display: flex;
+  button {
+    font-size: 18px;
+    width: 100%;
+    padding: 12px;
+    color: $black;
+  }
+  > li.on {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background-color: $point-color;
+      z-index: 1;
+    }
+  }
+  > li.on button {
+    font-weight: 700;
+  }
+}
+
+.board-box {
+  padding-top: 20px;
+}
+
+.board-content {
+  // display: none;
+  // &.on {
+  //   display: block;
+  // }
+
+  > li:not(:first-child) {
+    padding-top: 1rem;
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .list-tit {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      .label {
+        min-width: 50px;
+        padding: 3px 8px;
+        color: $white;
+        text-align: center;
+        border-radius: 30px;
+        &.pink {
+          background-color: $lightpink;
+        }
+        &.mint {
+          background-color: $mint;
+        }
+      }
+      p {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        width: calc(100% - 60px);
+        color: $black;
+        transition: 0.3s;
+        &:hover,
+        &:focus {
+          color: $point-color;
+        }
+      }
+    }
+    .date {
+      color: $darkgray;
+    }
+  }
+}
+
+@include responsive(360px) {
+  .board-tab {
+    button {
+      font-size: 22px;
+    }
+  }
+  .board-content {
+    font-size: 16px;
+  }
+}
+
+@include responsive(768px) {
+  .more-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .board-tab {
+    width: calc(100% - 40px);
+    padding-bottom: 8px;
+    button {
+      padding: 16px 60px;
+    }
+    > li.on::after {
+      bottom: -8px;
+    }
+  }
+
+  .board-content {
+    .item {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      .list-tit {
+        width: 80%;
+      }
+    }
+  }
+}
+
+@include responsive(1200px) {
+  .board-tab {
+    button {
+      font-size: 24px;
+    }
+  }
+  .board-content {
+    font-size: 18px;
+
+    > li:not(:first-child) {
+      padding-top: 2rem;
+    }
+  }
+}
+
+// section - book
+.section.book {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: #fbfbfb;
+    border-top-left-radius: 60px;
+  }
+
+  h3 {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    &::before {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 20px;
+      background: url("../../../public/img/main/icon-section-tit.svg") center
+        no-repeat;
+    }
+  }
+}
+
+.book-info-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  .book-info {
+    width: 100%;
+    padding: 30px 24px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px 0px rgba(171, 190, 209, 0.1);
+  }
+}
+
+.book-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+  p {
+    color: $black;
+    font-size: 18px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    width: calc(100% - 50px);
+  }
+}
+
+.book-info-list {
+  li {
+    display: flex;
+    gap: 10px;
+    &:not(:last-child) {
+      padding-bottom: 10px;
+    }
+  }
+  em {
+    color: $gray;
+    font-weight: 600;
+    min-width: 54px;
+  }
+}
+
+@include responsive(360px) {
+  .book-info-list {
+    font-size: 16px;
+  }
+}
+
+.scroll-text {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+  span {
+    animation: scrollTxt 30s linear infinite;
+    display: flex;
+    img {
+      max-width: none;
+      height: 5vh;
+    }
+  }
+}
+
+@keyframes scrollTxt {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-3455px);
+  }
+}
+
+@include responsive(768px) {
+  .scroll-text {
+    span {
+      img {
+        height: 10vh;
+      }
+    }
+  }
+}
+
+@include responsive(1024px) {
+  .section.book {
+    h3 {
+      font-size: 48px;
+      &::before {
+        width: 90px;
+        height: 36px;
+        background-size: 90px 36px;
+      }
+    }
+  }
+}
+
+// 이달의 도서 슬라이드
+.slide-control {
+  position: relative;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 152px;
+
+  .btn-next,
+  .btn-prev {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 8px 16px 0px rgba(171, 190, 209, 0.3);
+    background-color: $white;
+    cursor: pointer;
+    &::after {
+      content: "";
+      display: block;
+      background: url("../../../public/img/common/icon-arrow.svg") center
+        no-repeat;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .btn-prev::after {
+    transform: rotate(180deg);
+  }
+  .swiper-pagination {
+    width: 60px;
+    height: 40px;
+    padding: 10px 15px;
+    position: static;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px 0px rgba(171, 190, 209, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    background-color: $white;
+  }
+}
+
+.book-img-list {
+  .item {
+    overflow: hidden;
+    border-radius: 15px 40px 40px 15px;
+    aspect-ratio: 280/380;
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+@include responsive(500px) {
+  .book-info-wrap {
+    margin-bottom: 2em;
+  }
+  .book-img-list {
+    .swiper-slide {
+      opacity: 0.5;
+      scale: 0.8;
+    }
+
+    .swiper-slide-active {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+}
+
+@include responsive(1024px) {
+  .book-info-wrap {
+    gap: 2em;
+    width: calc(30% - 15px);
+    margin-bottom: 0;
+    justify-content: flex-end;
+    .book-info {
+      padding: 60px 40px;
+    }
+  }
+
+  .book-title {
+    p {
+      font-size: 24px;
+    }
+  }
+
+  .monthly-slide {
+    display: flex;
+    gap: 30px;
+    .book-image {
+      width: calc(70% - 15px);
+    }
+  }
+
+  .slide-control {
+    width: 230px;
+    .btn-next,
+    .btn-prev {
+      width: 60px;
+      height: 60px;
+    }
+    .swiper-pagination {
+      width: 90px;
+      height: 60px;
+      border-radius: 90px;
+    }
+  }
+}
+
+// 베스트 / 신착도서
+.book-tab {
+  display: flex;
+  gap: 1rem;
+  > li {
+    position: relative;
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 4px;
+      background-color: $pink;
+      transition: width 0.3s;
+    }
+    &:nth-child(2)::after {
+      background-color: $mint;
+    }
+    &.on::after {
+      width: 100%;
+    }
+    button {
+      font-size: 18px;
+      font-weight: 700;
+      color: $black;
+    }
+  }
+}
+
+.book-contents {
+  .book-tab-cont {
+    overflow: hidden;
+    .book-slide {
+      padding: 30px 0;
+      .item {
+        overflow: hidden;
+        border-radius: 10px 20px 20px 10px;
+        box-shadow: 0 10px 16px 0px rgba(171, 190, 209, 0.3);
+        aspect-ratio: 154 / 203;
+        translate: 0 0;
+        transition: translate 0.3s;
+        &:hover {
+          translate: 0 -20px;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+@include responsive(768px) {
+  .book-tab {
+    > li {
+      button {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+@include responsive(1200px) {
+  .book-tab {
+    gap: 2rem;
+    > li {
+      &.on::after {
+        height: 10px;
+        bottom: -10px;
+      }
+      button {
+        font-size: 42px;
+      }
+    }
+  }
+
+  .book-contents {
+    .book-tab-cont {
+      .book-slide {
+        padding: 60px 0;
+      }
+    }
+  }
+}
