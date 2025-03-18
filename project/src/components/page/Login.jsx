@@ -60,7 +60,7 @@ function Login({ gnb1, gnb2 }) {
     if (phoneNum === 'admin') {
       // admin이면 유효성 검사 없이 바로 로그인 처리
       const adminUser = {
-        name: 1,
+        name: "관리자",
         id: 1,
         pw, // 보안상 비밀번호를 그대로 저장하는 것은 위험! 실제 서비스에서는 해싱 필요
         bData: '',
@@ -77,9 +77,9 @@ function Login({ gnb1, gnb2 }) {
     }
 
     const user = member_data.find(
-      (m) => m.id.replace(/\D/g, '') === cleanPhoneNum && m.pw === pw
+      (m) => String(m.id).replace(/\D/g, '') == cleanPhoneNum && m.pw === pw
     );
-
+    
     if (user) {
       // 로그인 성공 시 사용자 정보 세션스토리지에 저장
       sessionStorage.setItem('loggedInUser', JSON.stringify(user));
@@ -91,7 +91,7 @@ function Login({ gnb1, gnb2 }) {
       alert('휴대폰번호 혹은 비밀번호를 확인해주세요.');
     }
   };
-
+  
   // 휴대폰 번호, 비밀번호 유효성을 통과할 때만 로그인 버튼 활성화
   useEffect(() => {
     if (phoneValid && pwValid) {
@@ -101,6 +101,10 @@ function Login({ gnb1, gnb2 }) {
     setNotAllow(true);
   }, [phoneValid, pwValid]);
 
+  // 회원가입 페이지 이동
+  const handleJoinClick = () => {
+    navigate("/join");
+  }
   return (
     <>
       <SubTop gnb1={gnb1} gnb2={gnb2} />
@@ -160,7 +164,7 @@ function Login({ gnb1, gnb2 }) {
               로그인
             </button>
             <hr className='divider' />
-            <button className='join-btn'>회원가입</button>
+            <button className='join-btn' onClick={handleJoinClick}>회원가입</button>
           </section>
         </div>
       </div>

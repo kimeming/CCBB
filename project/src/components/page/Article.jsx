@@ -23,7 +23,7 @@ function Article({ gnb1, gnb2 }) {
   const user = loginState ? context.user : null;
   // 로그인 상태면 유저이름 뜨고 없으면 null값으로 처리
   const userName = user !== null ? user.name : null;
-  // console.log("유저", user, "유저이름", userName, "로그인 상황", loginState);
+  console.log("유저", user, "유저이름", userName, "로그인 상황", loginState);
 
   // 데이터
   const { id } = useParams();
@@ -102,7 +102,7 @@ function Article({ gnb1, gnb2 }) {
     $("#text-comment").val("");
   };
 
-  // ================d eleteArticle
+  // ================ deleteArticle
   const deleteArticle = () => {
     if (window.confirm("삭제하시겠습니까?")) {
       const updatedArticle = communityData.filter((v) => v!==articleData);
@@ -126,6 +126,7 @@ function Article({ gnb1, gnb2 }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+  console.log("아티클 정보",articleData)
  
   // 로그인 상태 확인
   return (
@@ -141,7 +142,7 @@ function Article({ gnb1, gnb2 }) {
               <div className="writer-info">
                 <div className="profile">{articleData.user}</div>
                 <div className="date">{articleData.date}</div>
-                {articleData.user === userName && (
+                {user!==null? articleData.id === user.id && (
                   <button
                     type="button"
                     className="delete-button"
@@ -151,7 +152,7 @@ function Article({ gnb1, gnb2 }) {
                   >
                     삭제
                   </button>
-                )}
+                ):""}
               </div>
             </div>
             <div className="article-content">
@@ -175,7 +176,7 @@ function Article({ gnb1, gnb2 }) {
                     <div className="comment-content">
                       <p>{v.comment}</p>
                     </div>
-                    {v.name === userName && (
+                    {user!==null? v.id === user.id&& (
                       <button
                         type="button"
                         className="delete-button"
@@ -188,7 +189,7 @@ function Article({ gnb1, gnb2 }) {
                       >
                         삭제
                       </button>
-                    )}
+                    ):""}
                   </li>
                 ))}
               </ul>

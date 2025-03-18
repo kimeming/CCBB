@@ -5,7 +5,7 @@ import Gnb from "../module/Gnb";
 import { GP } from "../module/Contexter";
 import { menu2 } from "../../js/data/gnb_data";
 import * as layoutFn from "../../js/function/layout.js";
-import { memo, useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
 import $ from "jquery";
 
 export const TopArea = memo(({ gnb, setGnb, setSubTop }) => {
@@ -28,6 +28,9 @@ export const TopArea = memo(({ gnb, setGnb, setSubTop }) => {
 
   // useState
   const [searchInput, setSearchInput] = useState("검색어를 입력해주세요!");
+
+  // 검색창 포커스
+  const seachFocus = useRef("");
 
   // Fn
   // 로그아웃 처리 함수
@@ -93,7 +96,7 @@ export const TopArea = memo(({ gnb, setGnb, setSubTop }) => {
                 type="button"
                 className="total-search-btn"
                 onClick={() => {
-                  $("#mainSearchText").focus();
+                  seachFocus.current.focus();
                 }}
               >
                 <span className="blind">통합검색 버튼</span>
@@ -106,7 +109,9 @@ export const TopArea = memo(({ gnb, setGnb, setSubTop }) => {
               </button>
             </div>
             <div className="pc-header-util">
-              <button type="button" className="total-search-btn"></button>
+              <button type="button" className="total-search-btn"  onClick={() => {
+                  seachFocus.current.focus();
+                }}></button>
               <button type="button" className="search-close-btn"></button>
             </div>
           </div>
@@ -122,6 +127,7 @@ export const TopArea = memo(({ gnb, setGnb, setSubTop }) => {
                   name="searchTxt"
                   title="검색어"
                   placeholder={searchInput}
+                  ref={seachFocus}
                   onChange={(e) => {
                     setSearchInput(e.target.value);
                   }}

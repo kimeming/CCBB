@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { GP } from "../module/Contexter";
 
 // data
@@ -135,6 +135,7 @@ function Community({ gnb1, gnb2, data }) {
 
       {/* <!-- contents s --> */}
       <div className="contents">
+        <Outlet/>
         <SearchBox props={seachBoxProps} />
         {navigateSearchInput && (
           <div className="notice-search-results">

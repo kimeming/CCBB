@@ -13,6 +13,8 @@ function Post({ gnb1, gnb2 }) {
   const context = useContext(GP);
   const navigate = useNavigate();
   const postLocation = useLocation();
+  
+  const category = postLocation.state.data;
 
   // 로그인 정보
   // loginState는 boolean값으로 로그인상태에따라 사용해야할때 쓰시면됩니다
@@ -29,16 +31,16 @@ function Post({ gnb1, gnb2 }) {
     if (title === "" || content === "") {
       alert("제목과 내용을 모두 입력하세요.");
     } else {
-      setArticle(title, content);
+      setArticle(title, content,category);
       alert("등록되었습니다.");
-      navigate("/community/freeboard");
+      navigate(`/community/${category}`);
     }
 
     console.log(title, content);
   };
-  const setArticle = (title, content) => {
+  const setArticle = (title, content, category) => {
     const communityData = JSON.parse(localStorage.getItem("community_data"));
-    let freeboardList = communityData.filter((v) => v.type === "freeboard");
+    let freeboardList = communityData.filter((v) => v.type === category);
     let filterIdx = freeboardList.map((v) => v.idx);
     let maxIdx = Math.max(...filterIdx);
     if (localStorage.community_data) {
@@ -46,10 +48,10 @@ function Post({ gnb1, gnb2 }) {
       const today = new Date().toJSON().substr(0, 10);
       communityData.push({
         idx: Number(maxIdx) + 1,
-        type: "freeboard",
+        type: category,
         image: "",
         title: title,
-        user: userName,
+        name: userName,
         id: user.id,
         content: content,
         date: today,

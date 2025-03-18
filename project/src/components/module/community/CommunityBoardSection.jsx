@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const CommunityBoardSection = ({ props }) => {
@@ -7,6 +7,9 @@ export const CommunityBoardSection = ({ props }) => {
   const currentList = props.currentList;
   const navigate = useNavigate();
 
+  const selData = useRef(null)
+  const currentData = selData.current;
+
   const toggleListFn = (e) => {
     const list = document.querySelectorAll("#faq-tab .list");
     list.forEach((e) => {
@@ -14,6 +17,7 @@ export const CommunityBoardSection = ({ props }) => {
     });
     e.classList.contains("active") ? e.classList.remove("active") : e.classList.add("active");
   };
+  console.log(currentList)
 
   return (
     <div className="board-section">
@@ -43,7 +47,7 @@ export const CommunityBoardSection = ({ props }) => {
                   onClick={(e) => {
                     e.preventDefault();
                     if (data === "freeboard" || data === "notice") {
-                      navigate(`/community/${data}/${v.idx}`, { state: { user: v.user, listIdx: v.idx, data: data } });
+                      navigate(`/community/${data}/${v.idx}`, { state: { user: v.user, listIdx: v.idx, data: data, currentData } });
                     }
                   }}
                 >
@@ -51,7 +55,7 @@ export const CommunityBoardSection = ({ props }) => {
                     <p className="list-num">{i + 1}</p>
                     <p className="list-title">{v.title}</p>
                     <p className="list-date">{v.date}</p>
-                    <p className="list-user">{v.user}</p>
+                    <p className="list-user">{v.name}</p>
                   </div>
                   {data === "faq" && (
                     <div className="list-info">

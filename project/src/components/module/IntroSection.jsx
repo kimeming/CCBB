@@ -10,11 +10,11 @@ function IntroSection() {
             당신의 취향을 발견하는 공간, <strong>칙칙북북</strong>입니다.
           </h2>
           <div className="link-box-wrap">
-            <a href="/totalsearch" className="link-box">
+            <a href="/search/booksearch" className="link-box">
               <p>대출하기</p>
               <span className="link-box-bg bg01"></span>
             </a>
-            <a href="/book/reserve" className="link-box">
+            <a href="/error" className="link-box">
               <p>예약하기</p>
               <span className="link-box-bg bg02"></span>
             </a>

@@ -18,7 +18,7 @@ export const Pagenation = memo(({ props }) => {
   };
   const handleWrite = () => {
     if (!loginState) goLogin();
-    else navigate(`/community/${data}/post`);
+    else navigate(`/community/${data}/post`, {state:{data}});
   };
 
   // console.log("currentPage", currentPage, "totalPage", totalPage, "currentList", currentList);

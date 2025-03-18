@@ -65,8 +65,8 @@ function TotalSearch() {
 
   return (
     <>
-      <div className="contents">
         <Outlet/>
+      <div className="contents">
         <SearchBox props={seachBoxProps} />
           {navigateSearchInput && (
         <div className="notice-search-results">
